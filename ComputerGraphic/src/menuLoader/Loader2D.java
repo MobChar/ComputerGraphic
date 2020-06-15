@@ -1,6 +1,7 @@
 package menuLoader;
 
 import coordinateSystem.Point;
+import drawableObject.Circle;
 import drawableObject.Line;
 import drawer.Drawer;
 import javafx.scene.control.ColorPicker;
@@ -18,14 +19,34 @@ public class Loader2D extends MenuLoaderInterface{
 	@Override
 	public void init() {
 		// TODO Auto-generated method stub
-		float radianPerSec=0.6f;
-		Line myLine=new Line(new Point(0,0),new Point(0,50),colorPicker.getValue());
-		myLine.addTranform(new float[][] {
-			{(float) Math.cos(radianPerSec*Frame.deltaTime),(float) Math.sin(radianPerSec*Frame.deltaTime),0},
-			{-(float) Math.sin(radianPerSec*Frame.deltaTime),(float) Math.cos(radianPerSec*Frame.deltaTime),0},
-			{0,0,1}
-		});
-		drawer.draw(myLine);
+		float radianPerSec=5f;
+//		Line myLine=new Line(new Point(0,0),new Point(0,50),colorPicker.getValue());
+//		myLine.addTimelineTranform(new float[][] {
+//			{(float) Math.cos(radianPerSec*Frame.deltaTime),(float) Math.sin(radianPerSec*Frame.deltaTime),0},
+//			{-(float) Math.sin(radianPerSec*Frame.deltaTime),(float) Math.cos(radianPerSec*Frame.deltaTime),0},
+//			{0,0,1}
+//		},10);
+//		drawer.draw(myLine);
+		
+		
+		float moveXSpeedPerSec=40;
+		float moveYSpeedPerSec=-5;
+		Circle circle = new Circle(new Point(0,0),20,colorPicker.getValue());
+		circle.addTimelineTranform(new float[][] {
+			{1,0,0},
+			{0,1,0},
+			{(float) (Frame.deltaTime*moveXSpeedPerSec),(float) (Frame.deltaTime*moveYSpeedPerSec),1}
+		},10);
+		
+		circle.addTimelineTranform(new float[][] {
+		{(float) Math.cos(radianPerSec*Frame.deltaTime),(float) Math.sin(radianPerSec*Frame.deltaTime),0},
+		{-(float) Math.sin(radianPerSec*Frame.deltaTime),(float) Math.cos(radianPerSec*Frame.deltaTime),0},
+		{0,0,1}
+	},15);
+	
+		
+		
+		drawer.draw(circle);
 		
 		//Code o day 
 	}

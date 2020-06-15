@@ -32,6 +32,12 @@ public class Drawer {
 	public void clear() {
 		draw_list.clear();
 	}
+	public void remove(Drawable draw_object) {
+		draw_list.remove(draw_object);
+	}
+	public void remove(int index) {
+		draw_list.remove(index);
+	}
 	public void render() {
 		for(Drawable toDraw: draw_list) {
 			toDraw.drawSelf(this);

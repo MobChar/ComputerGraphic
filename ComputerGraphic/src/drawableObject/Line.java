@@ -7,9 +7,7 @@ import coordinateSystem.Transform;
 import drawer.Drawer;
 import javafx.scene.paint.Color;
 
-public class Line implements Drawable{
-	private float[][] tranformMatrix;
-	private ArrayList<float[][]> transformList;
+public class Line extends DrawableObject{
 	
 	private Point start, end;
 	private Color color;
@@ -19,28 +17,13 @@ public class Line implements Drawable{
 		this.end=end;
 		this.color=color;
 		
-		tranformMatrix=new float[][] {
-			{1,0,0},
-			{0,1,0},
-			{0,0,1}
-		};
-		
-		transformList=new ArrayList<float[][]>();
-	}
 	
-	
-	public void addTranform(float [][] matrix3x3) {
-		transformList.add(matrix3x3);
 	}
 
 	
 	@Override
 	public void drawSelf(Drawer drawer) {
-		//Tranform
-		for(float[][] transform : transformList) {
-			tranformMatrix=Transform.multi3x3(tranformMatrix, transform);
-		}
-		
+		super.drawSelf(drawer);
 		
 			int x0=start.x,x1=end.x,y0=start.y,y1=end.y;
 		  	int dx = Math.abs(x1 - x0);
