@@ -36,7 +36,7 @@ public class Circle extends DrawableObject{
              else
                  decesionParameter = decesionParameter + 4 * x + 6;
              
-             ret=Transform.transform3x3(center.x, center.y, tranformMatrix);
+            
              putCirclePixel(drawer,ret[0],ret[1], x, y);
          }
 	}

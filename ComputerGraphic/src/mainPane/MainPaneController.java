@@ -13,7 +13,6 @@ import javafx.scene.control.Menu;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import menuLoader.DemoLoader2D;
-import menuLoader.DemoLoader3D;
 import menuLoader.Loader2D;
 import menuLoader.Loader3D;
 
@@ -44,7 +43,7 @@ public class MainPaneController {
 		button_2d.setOnAction((e)->{new Loader2D(fuction_content,drawer,color_picker);});
 		button_demo2d.setOnAction((e)->{new DemoLoader2D(fuction_content,drawer,color_picker);});
 		button_3d.setOnAction((e)->{new Loader3D(fuction_content,drawer,color_picker);});
-		button_demo3d.setOnAction((e)->{new DemoLoader3D(fuction_content,drawer,color_picker);});
+		
 	
 		//Start render
 		new AnimationTimer() {
