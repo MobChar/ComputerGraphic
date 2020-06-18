@@ -29,7 +29,6 @@
             <Button fx:id="button_2d" mnemonicParsing="false" text="2D" />
             <Button fx:id="button_demo2d" mnemonicParsing="false" text="Demo 2D" />
             <Button fx:id="button_3d" mnemonicParsing="false" text="3D" />
-            <Button fx:id="button_demo3d" mnemonicParsing="false" text="Demo 3D" />
          </children>
       </HBox>
    </top>

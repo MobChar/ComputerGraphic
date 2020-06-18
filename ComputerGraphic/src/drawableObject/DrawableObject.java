@@ -25,15 +25,8 @@ public abstract class DrawableObject implements Drawable{
 		//Tranform
 		
 		if(transformList!=null) {
-			System.out.println(transformList.size());
 			for(int i=0;i<transformList.size();i++) {
 				tranformMatrix=Transform.multi3x3(tranformMatrix, transformList.get(i));
-				for(int k=0;k<3;k++) {
-					for(int j=0;j<3;j++) {
-						System.out.print(tranformMatrix[k][j]+" ");
-					}
-					System.out.println();
-				}
 //				if(beginTime.get(i)+timeOut.get(i)<=Frame.lastFrameTime/1e9) {
 //					tmpRemoveIndex.add(i);
 //				}

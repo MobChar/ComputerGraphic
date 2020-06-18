@@ -24,7 +24,7 @@ public class MainPaneController {
 	@FXML Button button_2d;
 	@FXML Button button_demo2d;
 	@FXML Button button_3d;
-	@FXML Button button_demo3d;
+
 	
 	
 	
