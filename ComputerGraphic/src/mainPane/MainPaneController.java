@@ -36,9 +36,12 @@ public class MainPaneController {
 		Frame.deltaTime=0;
 		
 		
+		
+		
 		//Drawer
-		Drawer drawer=new Drawer(canvas_content.getGraphicsContext2D().getPixelWriter());
-
+		Drawer drawer=new Drawer(canvas_content.getGraphicsContext2D());
+		
+		
 		
 		button_2d.setOnAction((e)->{new Loader2D(fuction_content,drawer,color_picker);});
 		button_demo2d.setOnAction((e)->{new DemoLoader2D(fuction_content,drawer,color_picker);});

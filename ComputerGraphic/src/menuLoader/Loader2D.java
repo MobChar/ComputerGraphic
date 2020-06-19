@@ -4,6 +4,7 @@ import coordinateSystem.Point;
 import drawableObject.Circle;
 import drawableObject.Ellipse;
 import drawableObject.Line;
+import drawableObject.Text;
 import drawer.Drawer;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -34,6 +35,7 @@ public class Loader2D extends MenuLoaderInterface{
 		Ellipse ellipse=new Ellipse(new Point(10,10),20,10,colorPicker.getValue());
 		
 //		drawer.remove(draw_object); Xoa ra khoi danh sach ve
+		drawer.draw(new Text(new Point(0,0),"Hello",colorPicker.getValue()));//Ve text 
 		
 		//Animation
 		Timeline demoAnimate=new Timeline();
