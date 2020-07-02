@@ -26,7 +26,7 @@ public abstract class DrawableObject implements Drawable{
 		
 		if(transformList!=null) {
 			for(int i=0;i<transformList.size();i++) {
-				tranformMatrix=Transform.multi3x3(tranformMatrix, transformList.get(i));
+				tranformMatrix=Transform.multi3x3(tranformMatrix,transformList.get(i));
 //				if(beginTime.get(i)+timeOut.get(i)<=Frame.lastFrameTime/1e9) {
 //					tmpRemoveIndex.add(i);
 //				}
@@ -76,5 +76,9 @@ public abstract class DrawableObject implements Drawable{
 			{0,1,0},
 			{0,0,1}
 		};
+	}
+	
+	public void transform(float[][] matrix) {
+		tranformMatrix=Transform.multi3x3(tranformMatrix,matrix);
 	}
 }

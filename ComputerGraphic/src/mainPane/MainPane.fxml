@@ -8,16 +8,16 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <left>
-      <VBox prefHeight="700.0" prefWidth="98.0" style="-fx-background-color: black;" BorderPane.alignment="CENTER">
+      <VBox prefHeight="700.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;">
+            <AnchorPane prefHeight="43.0" prefWidth="200.0" style="-fx-background-color: white;">
                <children>
                   <ColorPicker fx:id="color_picker" layoutX="3.0" layoutY="4.0" prefHeight="25.0" prefWidth="90.0" />
                </children>
             </AnchorPane>
-            <VBox fx:id="fuction_content" prefHeight="502.0" prefWidth="98.0" />
+            <VBox fx:id="fuction_content" alignment="TOP_CENTER" prefHeight="502.0" prefWidth="98.0" />
          </children></VBox>
    </left>
    <center>
@@ -27,7 +27,6 @@
       <HBox prefHeight="34.0" prefWidth="1098.0" BorderPane.alignment="CENTER">
          <children>
             <Button fx:id="button_2d" mnemonicParsing="false" text="2D" />
-            <Button fx:id="button_demo2d" mnemonicParsing="false" text="Demo 2D" />
             <Button fx:id="button_3d" mnemonicParsing="false" text="3D" />
          </children>
       </HBox>

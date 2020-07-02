@@ -3,21 +3,14 @@ package drawableObject;
 import coordinateSystem.Point;
 import coordinateSystem.Transform;
 import drawer.Drawer;
-import javafx.scene.control.Label;
 import javafx.scene.paint.Color;
 
-public class Circle extends DrawableObject{
+public class Circle3D extends DrawableObject{
 	private Point center;
 	private Color color;
 	private int radius;
 	
-	private Label text=null;
-	
-	public void setPointText(Label label) {
-		this.text=label;
-	}
-	
-	public Circle(Point center,int radius, Color color) {
+	public Circle3D(Point center,int radius, Color color) {
 		this.center=center;
 		this.color=color;
 		this.radius=radius;
@@ -27,16 +20,14 @@ public class Circle extends DrawableObject{
 	public void drawSelf(Drawer drawer) {
 		super.drawSelf(drawer);
 		
-		if(text!=null) {
-			float[] ret1=Transform.transform3x3(center.x,center.y, tranformMatrix);
-			text.setText(String.format("X: %.1f Y: %.1f",ret1[0],ret1[1]));
-		}
-		
 		 int x = 0, y = radius;
          int decesionParameter = 3 - 2 * radius;
          
          float[] ret=Transform.transform3x3(center.x, center.y, tranformMatrix);
+         
+         // ret[0], ret[1]: toa do tam
          putCirclePixel(drawer,ret[0],ret[1], x, y);
+         drawer.putPixel(ret[0],ret[1],this.color);
          while (y >= x)
          {
              x++;

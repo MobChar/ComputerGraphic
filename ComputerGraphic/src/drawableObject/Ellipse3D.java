@@ -3,21 +3,13 @@ package drawableObject;
 import coordinateSystem.Point;
 import coordinateSystem.Transform;
 import drawer.Drawer;
-import javafx.scene.control.Label;
 import javafx.scene.paint.Color;
 
-public class Ellipse extends DrawableObject{
+public class Ellipse3D extends DrawableObject{
 	private Point center;
 	private int rx,ry;
 	private Color color;
-	
-	private Label text=null;
-	
-	public void setPointText(Label label) {
-		this.text=label;
-	
-	}
-	public Ellipse(Point center, int rx, int ry, Color color) {
+	public Ellipse3D(Point center, int rx, int ry, Color color) {
 		this.center=center;
 		this.rx=rx;
 		this.ry=ry;
@@ -27,33 +19,32 @@ public class Ellipse extends DrawableObject{
 	public void drawSelf(Drawer drawer) {
 		super.drawSelf(drawer);
 		
-		if(text!=null) {
-			float[] ret1=Transform.transform3x3(center.x,center.y, tranformMatrix);
-			text.setText(String.format("X: %.1f Y: %.1f",ret1[0],ret1[1]));
-		}
-		
 		int xc=center.x;
 		int yc=center.y;
 		
 		float dx, dy, d1, d2, x, y; 
 		x = 0; 
 		y = ry; 
-
+		
+		int stt = 0;
 		// Initial decision parameter of region 1 
 		d1 = (float) ((ry * ry) - (rx * rx * ry) + 
 						(0.25 * rx * rx)); 
 		dx = 2 * ry * ry * x; 
 		dy = 2 * rx * rx * y; 
-
+		
 		// For region 1 
 		while (dx < dy) 
 		{ 
 			
-			float[] ret=Transform.transform3x3(x+xc,y+yc, tranformMatrix);
-			drawer.putPixel(ret[0],ret[1],this.color);
+			float[]ret;
+			if(stt%4 >= 1){
+				ret=Transform.transform3x3(x+xc,y+yc, tranformMatrix);
+				drawer.putPixel(ret[0],ret[1],this.color);
 			
-			ret=Transform.transform3x3(-x+xc,y+yc, tranformMatrix);
-			drawer.putPixel(ret[0],ret[1],this.color);
+				ret=Transform.transform3x3(-x+xc,y+yc, tranformMatrix);
+				drawer.putPixel(ret[0],ret[1],this.color);
+			}
 			
 			ret=Transform.transform3x3(x+xc,-y+yc, tranformMatrix);
 			drawer.putPixel(ret[0],ret[1],this.color);
@@ -83,6 +74,7 @@ public class Ellipse extends DrawableObject{
 				dy = dy - (2 * rx * rx); 
 				d1 = d1 + dx - dy + (ry * ry); 
 			} 
+			stt++;
 		} 
 
 		// Decision parameter of region 2 
@@ -93,13 +85,14 @@ public class Ellipse extends DrawableObject{
 		// Plotting points of region 2 
 		while (y >= 0) 
 		{ 
-			
-			float[] ret=Transform.transform3x3(x+xc,y+yc, tranformMatrix);
-			drawer.putPixel(ret[0],ret[1],this.color);
-			
-			ret=Transform.transform3x3(-x+xc,y+yc, tranformMatrix);
-			drawer.putPixel(ret[0],ret[1],this.color);
-			
+			float[] ret;
+			if(stt%4 > 1) {
+				ret=Transform.transform3x3(x+xc,y+yc, tranformMatrix);
+				drawer.putPixel(ret[0],ret[1],this.color);
+				
+				ret=Transform.transform3x3(-x+xc,y+yc, tranformMatrix);
+				drawer.putPixel(ret[0],ret[1],this.color);
+			}
 			ret=Transform.transform3x3(x+xc,-y+yc, tranformMatrix);
 			drawer.putPixel(ret[0],ret[1],this.color);
 			
@@ -128,6 +121,7 @@ public class Ellipse extends DrawableObject{
 				dy = dy - (2 * rx * rx); 
 				d2 = d2 + dx - dy + (rx * rx); 
 			} 
+			stt++;
 		} 
 	} 
 

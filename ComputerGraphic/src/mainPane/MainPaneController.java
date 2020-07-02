@@ -12,9 +12,10 @@ import javafx.scene.control.ColorPicker;
 import javafx.scene.control.Menu;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-import menuLoader.DemoLoader2D;
+
 import menuLoader.Loader2D;
 import menuLoader.Loader3D;
+
 
 public class MainPaneController {
 	@FXML Canvas canvas_content;
@@ -22,8 +23,9 @@ public class MainPaneController {
 	@FXML ColorPicker color_picker;
 	
 	@FXML Button button_2d;
-	@FXML Button button_demo2d;
 	@FXML Button button_3d;
+	
+	boolean is3d=false;
 
 	
 	
@@ -43,9 +45,8 @@ public class MainPaneController {
 		
 		
 		
-		button_2d.setOnAction((e)->{new Loader2D(fuction_content,drawer,color_picker);});
-		button_demo2d.setOnAction((e)->{new DemoLoader2D(fuction_content,drawer,color_picker);});
-		button_3d.setOnAction((e)->{new Loader3D(fuction_content,drawer,color_picker);});
+		button_2d.setOnAction((e)->{new Loader2D(fuction_content,drawer,color_picker);is3d=false;});
+		button_3d.setOnAction((e)->{new Loader3D(fuction_content,drawer,color_picker);is3d=true;});
 		
 	
 		//Start render
@@ -76,7 +77,16 @@ public class MainPaneController {
 			   			
 			   			canvas_content.getGraphicsContext2D().strokeLine(0,i*CoordinateSystem.SPACE_SCREEN_RATIO,canvas_content.getWidth(),i*CoordinateSystem.SPACE_SCREEN_RATIO);
 			   		}
-		   		
+			   			
+			   		
+			   		if(is3d) {
+			   			Point x=CoordinateSystem.spaceToScreen(-70,-70);
+			   			Point y=CoordinateSystem.spaceToScreen(70,70);
+			   			
+			   			canvas_content.getGraphicsContext2D().setStroke(Color.YELLOW);
+			   			canvas_content.getGraphicsContext2D().strokeLine(x.x,x.y,y.x,y.y);
+			   		}
+					
 		   		
 			   		
 		    	   	
