@@ -46,9 +46,6 @@ public class Loader2D extends MenuLoaderInterface{
 		Line lineHat3 = new  Line(new Point(-40,5),new Point(-50,15), Color.rgb(0,0,0));
 		
 		
-		
-	
-		
 		Circle head = new Circle(new Point(-50,-5), 10, Color.rgb(255, 0, 0));
 		Circle2 bullet = new Circle2(new Point(-65,-20),null, 3, Color.rgb(0, 255, 255));
 		Line lineGround = new Line(new Point(-70,-55), new Point(-20,-55),Color.rgb(185,122,7));
@@ -67,9 +64,6 @@ public class Loader2D extends MenuLoaderInterface{
 		Line line6 = new  Line(new Point(-29,-2),new Point(-31,1), Color.rgb(0,0,0));
 		LineWithCircle line7 = new  LineWithCircle(new Point(-24,1),bullet, Color.rgb(0,0,0));
 		LineWithCircle line8 = new  LineWithCircle(new Point(-31,1),bullet, Color.rgb(0,0,0));
-		float moveXSpeedPerSec=25*0.015f;
-		float moveYSpeedPerSec=12*0.015f;
-		float radianPerSec=1f;
 		
 		hat_line1=new Label();
 		hat_line2=new Label();
@@ -81,6 +75,7 @@ public class Loader2D extends MenuLoaderInterface{
 		hand_right=new Label();
 		leg_left=new Label();
 		leg_right=new Label();
+		
 		
 		
 		lineHat1.setPointText(hat_line1);
@@ -102,7 +97,9 @@ public class Loader2D extends MenuLoaderInterface{
 				new Label("Human legs"),leg_left,leg_right,
 				new Label("Bullet"),bullet_circle);
 		
-		
+		float moveXSpeedPerSec=25*0.015f;
+		float moveYSpeedPerSec=12*0.015f;
+		float radianPerSec=1f;
 		// animation
 		Timeline demoAnimate=new Timeline();
 		demoAnimate.getKeyFrames().addAll(
@@ -125,10 +122,10 @@ public class Loader2D extends MenuLoaderInterface{
 					bullet.addTimelineTranform(new float[][] {
 						{1,0,0},
 						{0,1,0},
-						{0,0.015f*-25,1}
+						{0f,0.015f*-25,1}
 					});
 				}),
-				new KeyFrame(Duration.seconds(7),e -> {
+				new KeyFrame(Duration.seconds(7.5),e -> {
 					bullet.clearTimelineTransform();
 				})
 		);
@@ -173,13 +170,14 @@ public class Loader2D extends MenuLoaderInterface{
 		Line lineD1=new Line(new Point(40,50),new Point(40,57),Color.rgb(60, 50, 0));
 		Line lineD2=new Line(new Point(40,30),new Point(40,23),Color.rgb(60, 50, 0));
 
-		Circle2 circle = new Circle2(new Point(40,40),null, 10,Color.rgb(54, 117, 23));
+		Circle circle = new Circle(new Point(40,40),10,Color.rgb(54, 117, 23));
 		
 		Ellipse elipD1=new Ellipse(new Point(40,20),8,3,Color.rgb(226, 135, 14));
 		Ellipse elipD2=new Ellipse(new Point(40,60),8,3,Color.rgb(226, 135, 14));
 		Ellipse elipD3=new Ellipse(new Point(20,40),8,3,Color.rgb(226, 135, 14));
 		Ellipse elipD4=new Ellipse(new Point(60,40), 8, 3, Color.rgb(226, 135, 14));
 		
+
 		corona_circle=new Label();
 		corona_ellipse1=new Label();
 		corona_ellipse2=new Label();
@@ -196,7 +194,8 @@ public class Loader2D extends MenuLoaderInterface{
 				new Label("Corona ellipse"),corona_ellipse1,corona_ellipse2,corona_ellipse3,corona_ellipse4);
 		
 //		drawer.remove(draw_object); Xoa ra khoi danh sach ve
-		Text text2 =new Text(new Point(45,-47),"CORONA",Color.rgb(0, 0, 0)) ;//Ve text 
+		
+		
 		float[][] trai =new float[][] {{1,0,0},{0,1,0},{-1,0,1}};
 		float[][] phai =new float[][] {{1,0,0},{0,1,0},{1,0,1}};
 		
@@ -205,7 +204,6 @@ public class Loader2D extends MenuLoaderInterface{
 		//Animation
 		Timeline demoAnimate1=new Timeline();
 		demoAnimate1.getKeyFrames().addAll(
-				//...................................................................
 				new KeyFrame(Duration.seconds(1),e -> {
 					
 					circle.transform(doixungOy);
@@ -235,22 +233,6 @@ public class Loader2D extends MenuLoaderInterface{
 					elipD4.transform(doixungOy);
 					
 				}),
-				//..................................................................................
-					
-				new KeyFrame(Duration.seconds(1.8),e ->   {
-					
-					circle.removeTimelineTransform(0);
-					lineD1.removeTimelineTransform(0);
-					lineD2.removeTimelineTransform(0);
-					lineN1.removeTimelineTransform(0);
-					lineN2.removeTimelineTransform(0);
-					elipD1.removeTimelineTransform(0);
-					elipD2.removeTimelineTransform(0);
-					elipD3.removeTimelineTransform(0);
-					elipD4.removeTimelineTransform(0);		
-
-				})
-				,
 				new KeyFrame(Duration.seconds(2),e -> {
 			
 					circle.addTimelineTranform(trai);
@@ -313,6 +295,9 @@ public class Loader2D extends MenuLoaderInterface{
 				,
 				// test
 				new KeyFrame(Duration.seconds(5),e -> {
+
+
+//					circle.addTimelineTranform(phongto);
 					lineD1.addTimelineTranform(phongto);
 					lineD2.addTimelineTranform(phongto);
 					lineN1.addTimelineTranform(phongto);
@@ -322,11 +307,13 @@ public class Loader2D extends MenuLoaderInterface{
 					elipD2.addTimelineTranform(phongto);
 					elipD3.addTimelineTranform(phongto);
 					elipD4.addTimelineTranform(phongto);
-
+					System.out.print("Maximize");
 
 				}),
 				
 				new KeyFrame(Duration.seconds(6),e ->   {
+					
+//					circle.removeTimelineTransform(0);
 					lineD1.removeTimelineTransform(0);
 					lineD2.removeTimelineTransform(0);
 					lineN1.removeTimelineTransform(0);
@@ -336,7 +323,7 @@ public class Loader2D extends MenuLoaderInterface{
 					elipD2.removeTimelineTransform(0);
 					elipD3.removeTimelineTransform(0);
 					elipD4.removeTimelineTransform(0);
-				
+					System.out.print("Remove");
 
 				})
 				,
@@ -388,7 +375,7 @@ public class Loader2D extends MenuLoaderInterface{
 
 				})
 				,
-				new KeyFrame(Duration.seconds(7.3),e ->   {
+				new KeyFrame(Duration.seconds(7.5),e ->   {
 					
 					circle.removeTimelineTransform(0);
 					lineD1.removeTimelineTransform(0);
@@ -403,25 +390,19 @@ public class Loader2D extends MenuLoaderInterface{
 
 				})
 				,
-				new KeyFrame(Duration.seconds(7.3),e -> {
-					drawer.draw(line);
-					drawer.draw(lineR);
-					drawer.draw(lineL);
-					
+				new KeyFrame(Duration.seconds(7.5),e -> {
 					drawer.draw(lineX);
 					drawer.draw(lineX1);
 					drawer.draw(lineX2);
-					Text textToaDoSau1 =new Text(new Point((int)bullet.x,(int)bullet.y),"("+String.valueOf((int)bullet.x)+","+String.valueOf((int)bullet.y)+")", Color.rgb(0, 0, 0)) ;
-					Text textToaDoSau2 =new Text(new Point((int)circle.x,(int)circle.y),"("+String.valueOf((int)circle.x)+","+String.valueOf((int)circle.y)+")", Color.rgb(0, 0, 0));
-					
-					drawer.draw(textToaDoSau1);
-					drawer.draw(textToaDoSau2);
+					drawer.draw(line);
+					drawer.draw(lineR);
+					drawer.draw(lineL);
+					Text text2 =new Text(new Point(45,-50),"CORONA",Color.rgb(0, 0, 0)) ;//Ve text 
+					drawer.draw(text2);
 					
 				})
 					
 		);
-	
-
 		drawer.draw(circle);
 		drawer.draw(text);
 		

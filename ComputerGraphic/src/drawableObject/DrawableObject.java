@@ -81,4 +81,21 @@ public abstract class DrawableObject implements Drawable{
 	public void transform(float[][] matrix) {
 		tranformMatrix=Transform.multi3x3(tranformMatrix,matrix);
 	}
+	
+	public void rotate( int x,int y, Double radian) {
+
+
+		float[][] mt1= {{1,0,0},{0,1,0},{-x,-y,1}};
+		float[][] mt2={
+				{(float) Math.cos(radian),(float) Math.sin(radian),0},
+				{-(float) Math.sin(radian),(float) Math.cos(radian),0},
+				{0,0,1}
+				};
+		
+		float[][] mt3= {{1,0,0},{0,1,0},{x,y,1}};
+		
+		float[][] mt = Transform.multi3x3(mt1, mt2);
+		float[][] mt4 = Transform.multi3x3(mt, mt3);
+		tranformMatrix=mt4;
+	}
 }
